@@ -1,0 +1,64 @@
+{
+    "telemetry.machineId": "4fd368a50cab7edf1f493950ad5427e90b9ac12fca180ac55f52481aaf7b6541",
+    "telemetry.sqmId": "{FA40F3C1-D017-4747-897F-35231A25DFB7}",
+    "telemetry.devDeviceId": "f7476f93-1228-494b-9f28-281a02ef2b15",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [],
+        "emptyWindows": [
+            {
+                "backupFolder": "1752432540655"
+            }
+        ]
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {},
+        "emptyWindows": {
+            "1752432540655": "__default__profile__"
+        }
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1f1f1f",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#cccccc",
+            "background": "#1f1f1f",
+            "editorBackground": "#1f1f1f",
+            "titleBarBackground": "#181818",
+            "titleBarBorder": "#2b2b2b",
+            "activityBarBackground": "#181818",
+            "activityBarBorder": "#2b2b2b",
+            "sideBarBackground": "#181818",
+            "sideBarBorder": "#2b2b2b",
+            "statusBarBackground": "#181818",
+            "statusBarBorder": "#2b2b2b",
+            "statusBarNoFolderBackground": "#1f1f1f"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 300,
+            "auxiliaryBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false
+        }
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "backupPath": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\Backups\\1752432540655",
+            "uiState": {
+                "mode": 1,
+                "x": 168,
+                "y": 80,
+                "width": 1200,
+                "height": 800
+            }
+        },
+        "openedWindows": []
+    }
+}

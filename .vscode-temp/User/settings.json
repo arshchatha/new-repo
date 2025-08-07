@@ -1,0 +1,150 @@
+{
+    "workbench.editor.empty.hint": "hidden",
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#00FF0010"
+        },
+        {
+            "column": 100,
+            "color": "#BDB76B15"
+        },
+        {
+            "column": 120,
+            "color": "#FA807219"
+        }
+    ],
+    "editor.unicodeHighlight.includeComments": true,
+    "workbench.colorCustomizations": {
+        "[Default Dark Modern]": {
+            "tab.activeBorderTop": "#00FF00",
+            "tab.unfocusedActiveBorderTop": "#00FF0088",
+            "textCodeBlock.background": "#00000055"
+        },
+        "editor.wordHighlightStrongBorder": "#FF6347",
+        "editor.wordHighlightBorder": "#FFD700",
+        "editor.selectionHighlightBorder": "#A9A9A9"
+    },
+    "workbench.editor.revealIfOpen": true,
+    "files.eol": "\n",
+    "[bat]": {
+        "files.eol": "\r\n"
+    },
+    "emmet.variables": {
+        "lang": "en"
+    },
+    "cSpell.diagnosticLevel": "Hint",
+    "trailing-spaces.backgroundColor": "rgba(255,0,0,0.1)",
+    "trailing-spaces.includeEmptyLines": false,
+    "terminal.integrated.tabs.hideCondition": "never",
+    "terminal.integrated.enablePersistentSessions": false,
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.detectJdksAtStart": false,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.maxConcurrentBuilds": 12,
+    "java.sources.organizeImports.staticStarThreshold": 1,
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\8"
+        },
+        {
+            "name": "JavaSE-11",
+            "path": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\11"
+        },
+        {
+            "name": "JavaSE-17",
+            "path": "C:\\Program Files\\Java\\jdk-17"
+        },
+        {
+            "name": "JavaSE-21",
+            "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot"
+        },
+        {
+            "name": "JavaSE-24",
+            "path": "C:\\Users\\arshc\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+            "default": true
+        }
+    ],
+    "terminal.integrated.profiles.windows": {
+        "JavaSE-1.8 LTS": {
+            "overrideName": true,
+            "env": {
+                "PATH": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\8\\bin;${env:PATH}",
+                "JAVA_HOME": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\8"
+            },
+            "path": "cmd"
+        },
+        "JavaSE-11 LTS": {
+            "overrideName": true,
+            "env": {
+                "PATH": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\11\\bin;${env:PATH}",
+                "JAVA_HOME": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\11"
+            },
+            "path": "cmd"
+        },
+        "JavaSE-17 LTS": {
+            "overrideName": true,
+            "env": {
+                "PATH": "C:\\Program Files\\Java\\jdk-17\\bin;${env:PATH}",
+                "JAVA_HOME": "C:\\Program Files\\Java\\jdk-17"
+            },
+            "path": "cmd"
+        },
+        "JavaSE-21 LTS": {
+            "overrideName": true,
+            "env": {
+                "PATH": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot\\bin;${env:PATH}",
+                "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
+                "JAVA_HOME": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot"
+            },
+            "path": "cmd",
+            "args": [
+                "/k",
+                "chcp",
+                "65001"
+            ]
+        },
+        "JavaSE-24": {
+            "overrideName": true,
+            "env": {
+                "PATH": "C:\\Users\\arshc\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}",
+                "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
+                "JAVA_HOME": "C:\\Users\\arshc\\AppData\\Roaming\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
+            },
+            "path": "cmd",
+            "args": [
+                "/k",
+                "chcp",
+                "65001"
+            ]
+        }
+    },
+    "terminal.integrated.automationProfile.windows": {
+        "path": "cmd"
+    },
+    "terminal.integrated.defaultProfile.windows": "JavaSE-24",
+    "java.test.config": {
+        "vmArgs": [
+            "-Dstdout.encoding=UTF-8",
+            "-Dstderr.encoding=UTF-8"
+        ]
+    },
+    "terminal.integrated.env.windows": {
+        "JAVA_HOME": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot",
+        "PATH": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot\\bin;${env:PATH}"
+    },
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot"
+        }
+    ],
+    "java.import.gradle.java.home": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.2.13-hotspot",
+    "maven.executable.path": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\maven\\latest\\bin\\mvn",
+    "java.import.gradle.home": "C:\\Users\\arshc\\OneDrive\\Desktop\\load\\lboard\\.vscode-temp\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\gradle\\latest"
+}

@@ -1,0 +1,356 @@
+final _formKey = GlobalKey<FormState>();
+
+  // Pickup fields
+  final TextEditingController _pickupLocationController = TextEditingController();
+  final TextEditingController _pickupAddressController = TextEditingController();
+  DateTime? _pickupDate;
+  TimeOfDay? _pickupTime;
+  final TextEditingController _pickupReferenceController = TextEditingController(text: 'ISV_TRIP-1287');
+  final TextEditingController _pickupDescriptionController = TextEditingController();
+
+  // Delivery fields
+  final TextEditingController _dropLocationController = TextEditingController();
+  final TextEditingController _deliveryAddressController = TextEditingController();
+  DateTime? _deliveryDate;
+  TimeOfDay? _deliveryTime;
+  final TextEditingController _deliveryReferenceController = TextEditingController(text: 'ISV_TRIP-1287');
+  bool _appointment = true;
+  final TextEditingController _deliveryDescriptionController = TextEditingController();
+
+  // Commodities
+  List<CommodityRow> commodities = [CommodityRow()];
+
+  @override
+  void dispose() {
+    _pickupLocationController.dispose();
+    _pickupAddressController.dispose();
+    _pickupReferenceController.dispose();
+    _pickupDescriptionController.dispose();
+    _dropLocationController.dispose();
+    _deliveryAddressController.dispose();
+    _deliveryReferenceController.dispose();
+    _deliveryDescriptionController.dispose();
+    for (var commodity in commodities) {
+      commodity.dispose();
+    }
+    super.dispose();
+  }
+=======
+class _PostLoadScreenState extends State<PostLoadScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  // Pickup fields
+  final TextEditingController _pickupLocationController = TextEditingController();
+  final TextEditingController _pickupAddressController = TextEditingController();
+  DateTime? _pickupDate;
+  TimeOfDay? _pickupTime;
+  final TextEditingController _pickupReferenceController = TextEditingController(text: 'ISV_TRIP-1287');
+  final TextEditingController _pickupDescriptionController = TextEditingController();
+
+  // Delivery fields
+  final TextEditingController _dropLocationController = TextEditingController();
+  final TextEditingController _deliveryAddressController = TextEditingController();
+  DateTime? _deliveryDate;
+  TimeOfDay? _deliveryTime;
+  final TextEditingController _deliveryReferenceController = TextEditingController(text: 'ISV_TRIP-1287');
+  bool _appointment = true;
+  final TextEditingController _deliveryDescriptionController = TextEditingController();
+
+  // Additional fields
+  String? _selectedTrailerType;
+  final List<String> _trailerTypes = ['Van', 'Flatbed', 'Reefer', 'Step Deck', 'Lowboy', 'Other'];
+  final TextEditingController _dimensionsController = TextEditingController();
+  final TextEditingController _rateController = TextEditingController();
+
+  // Commodities
+  List<CommodityRow> commodities = [CommodityRow()];
+
+  @override
+  void dispose() {
+    _pickupLocationController.dispose();
+    _pickupAddressController.dispose();
+    _pickupReferenceController.dispose();
+    _pickupDescriptionController.dispose();
+    _dropLocationController.dispose();
+    _deliveryAddressController.dispose();
+    _deliveryReferenceController.dispose();
+    _deliveryDescriptionController.dispose();
+    _dimensionsController.dispose();
+    _rateController.dispose();
+    for (var commodity in commodities) {
+      commodity.dispose();
+    }
+    super.dispose();
+  }
+>>>>>>> REPLACE
+
+<<<<<<< SEARCH
+  void _submitForm() {
+    if (_formKey.currentState?.validate() ?? false) {
+      final user = Provider.of(context, listen: false).user;
+      if (user == null || !user.isBroker) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Only brokers can post loads')));
+        return;
+      }
+
+      // Create LoadPost object (simplified, adjust as needed)
+      final loadPost = LoadPost(
+        id: DateTime.now().toString(),
+        title: 'Load from ${_pickupLocationController.text} to ${_dropLocationController.text}',
+        origin: _pickupLocationController.text,
+        destination: _dropLocationController.text,
+        isBrokerPost: true,
+        postedBy: user.name,
+        // Add other fields as needed
+      );
+
+      Provider.of(context, listen: false).addLoad(loadPost);
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Load posted!')));
+    }
+  }
+=======
+  void _submitForm() {
+    if (_formKey.currentState?.validate() ?? false) {
+      final user = Provider.of(context, listen: false).user;
+      if (user == null || !(user.isBroker || user.isCarrier)) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Only brokers or carriers can post loads')));
+        return;
+      }
+
+      // Create LoadPost object with new fields
+      final loadPost = LoadPost(
+        id: DateTime.now().toString(),
+        title: 'Load from ${_pickupLocationController.text} to ${_dropLocationController.text}',
+        origin: _pickupLocationController.text,
+        destination: _dropLocationController.text,
+        isBrokerPost: user.isBroker,
+        postedBy: user.name,
+        description: _pickupDescriptionController.text,
+        pickupDate: _pickupDate != null ? DateFormat('yyyy-MM-dd').format(_pickupDate!) : '',
+        deliveryDate: _deliveryDate != null ? DateFormat('yyyy-MM-dd').format(_deliveryDate!) : '',
+        weight: commodities.map((c) => c.weightController.text).where((w) => w.isNotEmpty).join(', '),
+        dimensions: _dimensionsController.text,
+        rate: _rateController.text,
+        equipment: _selectedTrailerType != null ? [_selectedTrailerType!] : [],
+      );
+
+      Provider.of(context, listen: false).addLoad(loadPost);
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Load posted!')));
+    }
+  }
+>>>>>>> REPLACE
+
+<<<<<<< SEARCH
+            TextFormField(
+              controller: _pickupLocationController,
+              decoration: const InputDecoration(labelText: 'Add Location'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _pickupLocationController,
+              decoration: const InputDecoration(labelText: 'Select Pickup Location'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _pickupAddressController,
+              decoration: const InputDecoration(labelText: 'Pickup Address'),
+              validator: _notEmpty,
+            ),
+            _dateTimeField(
+              label: 'Pickup',
+              date: _pickupDate,
+              time: _pickupTime,
+              onTapDate: () => _pickDate(isPickup: true),
+              onTapTime: () => _pickTime(isPickup: true),
+            ),
+            TextFormField(
+              controller: _pickupReferenceController,
+              decoration: const InputDecoration(labelText: 'Reference No.*'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _pickupDescriptionController,
+              decoration: const InputDecoration(labelText: 'Pickup Description'),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 24),
+            const Text('Deliver To', style: TextStyle(fontWeight: FontWeight.bold)),
+            TextFormField(
+              controller: _dropLocationController,
+              decoration: const InputDecoration(labelText: 'Select Drop Location'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _deliveryAddressController,
+              decoration: const InputDecoration(labelText: 'Delivery Address'),
+              validator: _notEmpty,
+            ),
+            _dateTimeField(
+              label: 'Delivery',
+              date: _deliveryDate,
+              time: _deliveryTime,
+              onTapDate: () => _pickDate(isPickup: false),
+              onTapTime: () => _pickTime(isPickup: false),
+            ),
+            TextFormField(
+              controller: _deliveryReferenceController,
+              decoration: const InputDecoration(labelText: 'Reference No.*'),
+              validator: _notEmpty,
+            ),
+            SwitchListTile(
+              title: const Text('Appointment'),
+              value: _appointment,
+              onChanged: (val) => setState(() => _appointment = val),
+            ),
+            TextFormField(
+              controller: _deliveryDescriptionController,
+              decoration: const InputDecoration(labelText: 'Delivery Description'),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 24),
+            const Text('SHIPMENT DETAIL', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Table(
+              columnWidths: const {
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(1),
+                3: FlexColumnWidth(1),
+              },
+              border: TableBorder.all(color: Colors.grey),
+              children: commodities.map((c) => c.buildRow()).toList(),
+            ),
+            TextButton.icon(
+              onPressed: _addCommodityRow,
+              icon: const Icon(Icons.add),
+              label: const Text('Add Rows'),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _submitForm,
+              child: const Text('Submit Load'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+=======
+            TextFormField(
+              controller: _pickupLocationController,
+              decoration: const InputDecoration(labelText: 'Add Location'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _pickupAddressController,
+              decoration: const InputDecoration(labelText: 'Pickup Address'),
+              validator: _notEmpty,
+            ),
+            _dateTimeField(
+              label: 'Pickup',
+              date: _pickupDate,
+              time: _pickupTime,
+              onTapDate: () => _pickDate(isPickup: true),
+              onTapTime: () => _pickTime(isPickup: true),
+            ),
+            TextFormField(
+              controller: _pickupReferenceController,
+              decoration: const InputDecoration(labelText: 'Reference No.*'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _pickupDescriptionController,
+              decoration: const InputDecoration(labelText: 'Pickup Description'),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 24),
+            const Text('Deliver To', style: TextStyle(fontWeight: FontWeight.bold)),
+            TextFormField(
+              controller: _dropLocationController,
+              decoration: const InputDecoration(labelText: 'Select Drop Location'),
+              validator: _notEmpty,
+            ),
+            TextFormField(
+              controller: _deliveryAddressController,
+              decoration: const InputDecoration(labelText: 'Delivery Address'),
+              validator: _notEmpty,
+            ),
+            _dateTimeField(
+              label: 'Delivery',
+              date: _deliveryDate,
+              time: _deliveryTime,
+              onTapDate: () => _pickDate(isPickup: false),
+              onTapTime: () => _pickTime(isPickup: false),
+            ),
+            TextFormField(
+              controller: _deliveryReferenceController,
+              decoration: const InputDecoration(labelText: 'Reference No.*'),
+              validator: _notEmpty,
+            ),
+            SwitchListTile(
+              title: const Text('Appointment'),
+              value: _appointment,
+              onChanged: (val) => setState(() => _appointment = val),
+            ),
+            TextFormField(
+              controller: _deliveryDescriptionController,
+              decoration: const InputDecoration(labelText: 'Delivery Description'),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 24),
+            const Text('Trailer Type', style: TextStyle(fontWeight: FontWeight.bold)),
+            DropdownButtonFormField<String>(
+              value: _selectedTrailerType,
+              items: _trailerTypes
+                  .map((type) => DropdownMenuItem(value: type, child: Text(type)))
+                  .toList(),
+              onChanged: (val) => setState(() => _selectedTrailerType = val),
+              decoration: const InputDecoration(
+                labelText: 'Select Trailer Type',
+              ),
+              validator: (value) => value == null || value.isEmpty ? 'Please select a trailer type' : null,
+            ),
+            const SizedBox(height: 24),
+            TextFormField(
+              controller: _dimensionsController,
+              decoration: const InputDecoration(labelText: 'Dimensions (LxWxH)'),
+              validator: _notEmpty,
+            ),
+            const SizedBox(height: 24),
+            TextFormField(
+              controller: _rateController,
+              decoration: const InputDecoration(labelText: 'Rate (optional)'),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 24),
+            const Text('SHIPMENT DETAIL', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Table(
+              columnWidths: const {
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(1),
+                3: FlexColumnWidth(1),
+              },
+              border: TableBorder.all(color: Colors.grey),
+              children: commodities.map((c) => c.buildRow()).toList(),
+            ),
+            TextButton.icon(
+              onPressed: _addCommodityRow,
+              icon: const Icon(Icons.add),
+              label: const Text('Add Rows'),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _submitForm,
+              child: const Text('Submit Load'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
